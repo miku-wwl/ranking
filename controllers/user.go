@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,5 +15,13 @@ func (u UserController) GetUserInfo(c *gin.Context) {
 }
 
 func (u UserController) GetList(c *gin.Context) {
-	ReturnError(c, 4004, "没有相关信息")
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println("捕获异常")
+		}
+	}()
+
+	i := 1
+	j := 0
+	ReturnError(c, 4004+i/j, "没有相关信息")
 }
