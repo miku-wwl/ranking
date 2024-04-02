@@ -1,16 +1,12 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/gin-gonic/gin"
+	"ranking/router"
 )
 
 func main() {
 
-	r := gin.Default()
-	r.GET("/url", func(ctx *gin.Context) {
-		ctx.String(http.StatusOK, "Hello Wolrd!")
-	})
+	r := router.Router()
+
 	r.Run(":9999")
 }
