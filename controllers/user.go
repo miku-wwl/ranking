@@ -1,8 +1,6 @@
 package controllers
 
 import (
-	"fmt"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,11 +13,13 @@ func (u UserController) GetUserInfo(c *gin.Context) {
 }
 
 func (u UserController) GetList(c *gin.Context) {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println("捕获异常")
-		}
-	}()
+
+	// logger.Write("日志信息", "user")
+	// defer func() {
+	// 	if err := recover(); err != nil {
+	// 		fmt.Println("捕获异常")
+	// 	}
+	// }()
 
 	i := 1
 	j := 0
