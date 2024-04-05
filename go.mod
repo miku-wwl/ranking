@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/bytedance/sonic v1.11.3 // indirect
 	github.com/chenzhuoyu/iasm v0.9.1 // indirect
+	github.com/gin-contrib/sessions v1.0.0 // indirect
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-playground/validator/v10 v10.19.0 // indirect
 	github.com/jinzhu/gorm v1.9.16
