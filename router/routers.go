@@ -23,11 +23,22 @@ func Router() *gin.Engine {
 		ctx.String(http.StatusOK, "Hello Wolrd!")
 	})
 
-	user := r.Group("/user/")
+	user := r.Group("/user")
 	{
 		user.POST("/register", controllers.UserController{}.Register)
 		user.POST("/login", controllers.UserController{}.Login)
 	}
 
+	player := r.Group("/player")
+	{
+		player.POST("/list", controllers.PalyerController{}.GetPlayers)
+	}
+
+	vote := r.Group("/vote")
+	{
+		vote.POST("/add", controllers.VoteController{}.AddVote)
+	}
+
 	return r
+
 }
