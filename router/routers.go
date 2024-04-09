@@ -6,6 +6,7 @@ import (
 	"ranking/controllers"
 	"ranking/pkg/logger"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/sessions"
 	sessions_redis "github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,10 @@ func Router() *gin.Engine {
 	r := gin.Default()
 
 	r.Use(gin.LoggerWithConfig(logger.LoggerToFile()))
+
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowAllOrigins = true // 允许所有源，生产环境中请替换为具体的源
+	r.Use(cors.Default())
 	r.Use(logger.Recover)
 	store, _ := sessions_redis.NewStore(10, "tcp", config.RedisAddress, "", []byte("secret"))
 	r.Use(sessions.Sessions("mysession", store))
